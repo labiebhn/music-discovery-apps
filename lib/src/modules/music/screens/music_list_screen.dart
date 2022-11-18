@@ -61,6 +61,7 @@ class _MusicListScreenState extends State<MusicListScreen> {
                                 title: item.title,
                                 subtitle: item.subtitle,
                                 coverUrl: item.images?.coverart,
+                                brandUrl: item.hub?.image,
                               );
                             }),
                           ],
