@@ -5,6 +5,7 @@ class Helpers {
         error?.response?.data?.message ??
         error?.response?.message ??
         error?.message ??
+        error ??
         'Server Sedang Mengalami Gangguan';
 
     if (error?.response?.status == 500 ||

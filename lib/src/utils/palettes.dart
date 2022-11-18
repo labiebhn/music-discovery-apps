@@ -5,5 +5,7 @@ class Palettes {
   static Color info = const Color(0xFF1E88E5);
   static Color background = const Color(0xFF0A0A0A);
   static Color text = const Color(0xFFFAFAFA);
-  static Color textDisabled = Colors.white38;
+  static Color textDisabled = Color(0xFFAEAEAE);
+  static Color card = const Color(0xFF171818);
+  static Color border = const Color(0xFF2D2F2F);
 }

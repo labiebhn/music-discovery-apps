@@ -1,9 +1,9 @@
-class MusicChartTrack {
+class MusicChartTrackModel {
   List<Tracks>? tracks;
 
-  MusicChartTrack({this.tracks});
+  MusicChartTrackModel({this.tracks});
 
-  MusicChartTrack.fromJson(Map<String, dynamic> json) {
+  MusicChartTrackModel.fromJson(Map<String, dynamic> json) {
     if (json['tracks'] != null) {
       tracks = <Tracks>[];
       json['tracks'].forEach((v) {

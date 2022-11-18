@@ -1,8 +1,8 @@
-class MusicChartList {
+class MusicChartListModel {
   List<Countries>? _countries;
   Global? _global;
 
-  MusicChartList({List<Countries>? countries, Global? global}) {
+  MusicChartListModel({List<Countries>? countries, Global? global}) {
     if (countries != null) {
       this._countries = countries;
     }
@@ -16,7 +16,7 @@ class MusicChartList {
   Global? get global => _global;
   set global(Global? global) => _global = global;
 
-  MusicChartList.fromJson(Map<String, dynamic> json) {
+  MusicChartListModel.fromJson(Map<String, dynamic> json) {
     if (json['countries'] != null) {
       _countries = <Countries>[];
       json['countries'].forEach((v) {
