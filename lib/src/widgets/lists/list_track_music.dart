@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:music_apps/src/utils/fonts.dart';
 import 'package:music_apps/src/utils/palettes.dart';
@@ -39,6 +38,7 @@ class ListTrackMusic extends StatelessWidget {
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Container(
                     padding: const EdgeInsets.only(bottom: 8.0),
@@ -68,11 +68,7 @@ class ListTrackMusic extends StatelessWidget {
                   CachedNetworkImage(
                     imageUrl: brandUrl ?? '',
                     height: brandSize,
-                    placeholder: (context, url) => CupertinoActivityIndicator(
-                      color: Palettes.primary,
-                    ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    width: brandSize * 2.5,
                   ),
                 ],
               ),
@@ -82,8 +78,10 @@ class ListTrackMusic extends StatelessWidget {
               imageUrl: coverUrl ?? '',
               width: coverSize,
               height: coverSize,
-              placeholder: (context, url) => CupertinoActivityIndicator(
-                color: Palettes.primary,
+              placeholder: (context, url) => Container(
+                width: coverSize,
+                height: coverSize,
+                color: Palettes.card,
               ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             )

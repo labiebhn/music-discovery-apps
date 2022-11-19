@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
+import 'package:music_apps/src/enums/loading_enum.dart';
 import 'package:music_apps/src/enums/paginate_enum.dart';
 import 'package:music_apps/src/modules/music/containers/genre_music.dart';
 import 'package:music_apps/src/modules/music/notifier/music_notifier.dart';
@@ -29,10 +30,6 @@ class _MusicListScreenState extends State<MusicListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Palettes.text,
-      statusBarBrightness: Brightness.dark,
-    ));
     final musicNotifier = Provider.of<MusicNotifier>(context);
     return Scaffold(
       body: Container(
@@ -47,9 +44,13 @@ class _MusicListScreenState extends State<MusicListScreen> {
               const GenreMusic(),
               Expanded(
                 child: LazyLoadScrollView(
-                  onEndOfPage: () {},
+                  scrollOffset: 200,
+                  onEndOfPage: () {
+                    musicNotifier.getMusicChartTrack(Paginate.next);
+                  },
                   child: LoadWrapper(
                     loading: musicNotifier.loadingTrack,
+                    paginate: musicNotifier.paginateTypeTrack,
                     child: SingleChildScrollView(
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -64,6 +65,12 @@ class _MusicListScreenState extends State<MusicListScreen> {
                                 brandUrl: item.hub?.image,
                               );
                             }),
+                            musicNotifier.loadingTrack == Loading.pending
+                                ? LoadWrapper(
+                                    loading: musicNotifier.loadingTrack,
+                                    child: Container(),
+                                  )
+                                : Container(),
                           ],
                         ),
                       ),
