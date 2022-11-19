@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:music_apps/src/providers.dart';
 import 'package:music_apps/src/routes.dart';
@@ -18,9 +19,13 @@ Future main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Palettes.background,
+      systemNavigationBarColor: Palettes.background,
+      statusBarBrightness: Brightness.dark,
+    ));
     return MaterialApp(
       title: 'Music Apps',
       debugShowCheckedModeBanner: false,
